@@ -11,4 +11,6 @@ int exists(xcb_connection_t *, xcb_window_t);
 int mapped(xcb_connection_t *, xcb_window_t);
 int ignore(xcb_connection_t *, xcb_window_t);
 
+xcb_atom_t add_atom(xcb_connection_t *, xcb_atom_t type, char *name, size_t len);
+
 #endif

@@ -20,24 +20,6 @@ usage(char *name)
 	fprintf(stderr, "%s [-d] atom[=value] wid\n", name);
 }
 
-xcb_atom_t
-add_atom(xcb_atom_t type, char *name, size_t len)
-{
-	xcb_atom_t atom;
-	xcb_intern_atom_cookie_t c;
-	xcb_intern_atom_reply_t *r;
-
-	c = xcb_intern_atom(conn, 0, len, name);
-	r = xcb_intern_atom_reply(conn, c, NULL);
-	if (!r)
-		return 0;
-
-	atom = r->atom;
-	free(r);
-
-	return atom;
-}
-
 int
 set_atom(xcb_window_t wid, xcb_atom_t atom, xcb_atom_t type, size_t len, void *data)
 {
@@ -115,7 +97,7 @@ main(int argc, char **argv)
 		wid = strtoul(argv[i+1], NULL, 16);
 
 		/* retrieve atom ID from server */
-		atom = add_atom(XCB_ATOM_STRING, key, strlen(key));
+		atom = add_atom(conn, XCB_ATOM_STRING, key, strlen(key));
 		if (!atom)
 			return -1;
 

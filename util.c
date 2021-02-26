@@ -104,3 +104,22 @@ get_windows(xcb_connection_t *con, xcb_window_t w, xcb_window_t **l)
 	free(r);
 	return childnum;
 }
+
+xcb_atom_t
+add_atom(xcb_connection_t *conn, xcb_atom_t type, char *name, size_t len)
+{
+	xcb_atom_t atom;
+	xcb_intern_atom_cookie_t c;
+	xcb_intern_atom_reply_t *r;
+
+	c = xcb_intern_atom(conn, 0, len, name);
+	r = xcb_intern_atom_reply(conn, c, NULL);
+	if (!r)
+		return 0;
+
+	atom = r->atom;
+	free(r);
+
+	return atom;
+}
+

@@ -6,6 +6,7 @@ SRC =           \
 	lsw.c   \
 	mapw.c  \
 	killw.c \
+	clsw.c  \
 	wattr.c \
 	wtp.c   \
 	wmv.c   \

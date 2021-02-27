@@ -35,6 +35,7 @@ without being added to this list, so take it with a grain of salt.
 * chwso - change window's stacking order
 * ignw  - ignore/unignore window
 * killw - kill windows
+* clsw  - gracefully close windows
 * lsw   - list windows
 * mapw  - map/unmap windows
 * pfw   - print focused window
